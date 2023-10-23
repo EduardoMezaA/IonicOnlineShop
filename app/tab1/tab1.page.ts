@@ -14,12 +14,14 @@ export class Tab1Page {
   public productsFounds:Product[]=[];
   public filter=[
     "Abarrotes",
-    "Frutas y Verduras",
+    "Frutas y verduras",
     "Limpieza",
     "Farmacia",
   ];
+
   public cartItems:Product[]=[];
   public quantity: number = 1;
+  public totalCartPrice: number = 0; // Variable para el precio total del carrito
   
   constructor() {
     this.products.push({
@@ -81,6 +83,14 @@ export class Tab1Page {
     }
     );
   }
+  // Calcula el total del carrito
+calculateCartTotal(): number {
+  let total = 0;
+  for (const product of this.cartItems) {
+    total += product.price * product.quantity;
+  }
+  return total;
+}
 
   public cartProducts():void{
     console.log(this.cartItems);
@@ -95,26 +105,34 @@ export class Tab1Page {
       product.quantity = 1; // Inicializa la cantidad en 1 para un nuevo producto
       this.cartItems.push(product);
     }
+  
+    // Calcula el precio total del carrito después de agregar un producto
+    this.totalCartPrice = this.calculateCartTotal();
   }
+  
   
 
   increaseQuantity() {
     this.quantity++;
   }
-//eliminar producto del carrito
-removeFromCart(product: Product) {
-  const index = this.cartItems.indexOf(product);
-
-  if (index !== -1) {
-    if (product.quantity > 1) {
-      // Si la cantidad es mayor que 1, disminuye la cantidad en 1
-      product.quantity -= 1;
-    } else {
-      // Si la cantidad es 1, elimina el producto del carrito
-      this.cartItems.splice(index, 1);
+  
+  removeFromCart(product: Product) {
+    const index = this.cartItems.indexOf(product);
+  
+    if (index !== -1) {
+      if (product.quantity > 1) {
+        // Si la cantidad es mayor que 1, disminuye la cantidad en 1
+        product.quantity -= 1;
+      } else {
+        // Si la cantidad es 1, elimina el producto del carrito
+        this.cartItems.splice(index, 1);
+      }
+  
+      // Calcula el precio total del carrito después de eliminar un producto
+      this.totalCartPrice = this.calculateCartTotal();
     }
   }
-}
+  
 
   
   decreaseQuantity() {
