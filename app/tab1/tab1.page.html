@@ -7,8 +7,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-
     <ion-grid>
       <ion-row>
         <ion-col size="12">
@@ -16,7 +14,7 @@
             <ion-select-option value="Abarrotes">
               Abarrotes
             </ion-select-option>
-            <ion-select-option value="Frutas y Verduras"> 
+            <ion-select-option value="Frutas y verduras"> 
               Frutas y Verduras
             </ion-select-option>
             <ion-select-option value="Limpieza">
@@ -27,100 +25,7 @@
             </ion-select-option>
             
           </ion-select>
-        </ion-col><ion-header [translucent]="true">
-          <ion-toolbar>
-            <ion-title>
-              Abarrotes doña pelos
-            </ion-title>
-          </ion-toolbar>
-        </ion-header>
-        
-        <ion-content [fullscreen]="true">
-            <ion-grid>
-              <ion-row>
-                <ion-col size="12">
-                  <ion-select label="Tipo" [multiple]="true" interface="popover" label-placement="floating" [(ngModel)]="filter" (ionChange)="filterProducts()">
-                    <ion-select-option value="Abarrotes">
-                      Abarrotes
-                    </ion-select-option>
-                    <ion-select-option value="Frutas y Verduras"> 
-                      Frutas y Verduras
-                    </ion-select-option>
-                    <ion-select-option value="Limpieza">
-                      Limpieza
-                    </ion-select-option>
-                    <ion-select-option value="Farmacia">
-                      Farmacia
-                    </ion-select-option>
-                    
-                  </ion-select>
-                </ion-col>
-              </ion-row>
-        
-              <ion-row>
-                <div *ngFor="let product of productsFounds; index as i" style="display: inherit;">
-                  <ion-col size="6" size-sm="6" size-xs="12">
-                    <!-- *ngIf="product.type!='Frutas y Verduras'" -->
-                    <ion-card>
-                      <img [src]="product.photo+i" />
-                      <ion-card-header>
-                        <ion-card-title>
-                          {{product.name}}
-                            <ion-badge color="primary">{{product.type}}</ion-badge>
-                        </ion-card-title>
-                        <ion-card-subtitle>{{product.price|currency}}</ion-card-subtitle>
-                      </ion-card-header>
-                      <ion-card-content>
-                        {{product.description}}
-                      </ion-card-content>
-                      <!--<div>
-                        <ion-item>
-                          <ion-label>Cantidad:</ion-label>
-                          <ion-button (click)="decreaseQuantity()" fill="clear" slot="start">
-                            <ion-icon name="remove"></ion-icon>
-                          </ion-button>
-                          <ion-input type="number" [(ngModel)]="quantity" min="1" class="small-input"></ion-input>
-                          <ion-button (click)="increaseQuantity()" fill="clear" slot="end">
-                            <ion-icon name="add"></ion-icon>
-                          </ion-button>
-                        </ion-item>
-                      </div>-->
-        
-                      <ion-button fill="clear" (click)="addToCart(product)">Agregar</ion-button>
-        
-                    </ion-card>
-                  </ion-col>
-                </div>
-        
-              </ion-row>
-        
-              <ion-row>
-                <h1> <ion-icon name="cart-outline" size="large" ></ion-icon> Carrito</h1>
-              </ion-row>
-              <ion-row>
-                <div size="12" style="margin-left: 20px;">
-                <ion-col size="6" *ngFor="let product of cartItems; index as i">
-                  <ion-card>
-                    <ion-card-header class="large-font">
-                      {{product.name}}
-                    </ion-card-header>
-                    <ion-card-subtitle class="bordered-subtitle center-text">
-                      {{product.price|currency}}
-                    </ion-card-subtitle>
-                    <ion-card-subtitle  class="bordered-subtitle center-text">
-                      <ng-container *ngIf="product.quantity > 1"> Cantidad:{{product.quantity}}</ng-container>
-                    </ion-card-subtitle>
-                    <ion-button color="primary" fill="clear" (click)="removeFromCart(product)">
-                      Eliminar
-                    </ion-button>
-                  </ion-card>
-                </ion-col>
-              </div>
-              </ion-row>
-            </ion-grid>
-        
-        </ion-content>
-        
+        </ion-col>
       </ion-row>
 
       <ion-row>
@@ -132,19 +37,13 @@
               <ion-card-header>
                 <ion-card-title>
                   {{product.name}}
-
                     <ion-badge color="primary">{{product.type}}</ion-badge>
-
-                  
                 </ion-card-title>
                 <ion-card-subtitle>{{product.price|currency}}</ion-card-subtitle>
               </ion-card-header>
-            
               <ion-card-content>
                 {{product.description}}
               </ion-card-content>
-
-
               <!--<div>
                 <ion-item>
                   <ion-label>Cantidad:</ion-label>
@@ -160,9 +59,6 @@
 
               <ion-button fill="clear" (click)="addToCart(product)">Agregar</ion-button>
 
-              
-
-
             </ion-card>
           </ion-col>
         </div>
@@ -170,31 +66,28 @@
       </ion-row>
 
       <ion-row>
-        <h1> <ion-icon name="cart-outline" size="large"></ion-icon> Carrito</h1>
+        <h1> <ion-icon name="cart-outline" size="large" ></ion-icon> Carrito</h1>
       </ion-row>
       <ion-row>
         <div size="12" style="margin-left: 20px;">
         <ion-col size="6" *ngFor="let product of cartItems; index as i">
           <ion-card>
-            <ion-card-header>
+            <ion-card-header class="large-font">
               {{product.name}}
             </ion-card-header>
-            <ion-card-subtitle>{{product.price|currency}}</ion-card-subtitle>
+            <ion-card-subtitle class="bordered-subtitle center-text">
+              {{product.price|currency}}
+            </ion-card-subtitle>
+            <ion-card-subtitle  class="bordered-subtitle center-text">
+              <ng-container *ngIf="product.quantity > 1"> Cantidad:{{product.quantity}}</ng-container>
+            </ion-card-subtitle>
+            <ion-button color="primary" fill="clear" (click)="removeFromCart(product)">
+              Eliminar
+            </ion-button>
           </ion-card>
         </ion-col>
       </div>
       </ion-row>
-
     </ion-grid>
 
-    <!--<ion-fab slot="fixed" vertical="bottom" horizontal="end">
-      <ion-fab-button>
-        <ion-icon name="cart-outline"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>-->
-
 </ion-content>
-
-
-  
-  
