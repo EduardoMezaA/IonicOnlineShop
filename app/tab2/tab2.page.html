@@ -7,36 +7,36 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <ion-grid>
     <ion-row>
-      <h1> <ion-icon name="cart-outline" size="large" ></ion-icon> Carrito</h1>
+      <h1> <ion-icon name="cart-outline" size="large"></ion-icon> Carrito</h1>
     </ion-row>
     <ion-row>
-      <div size="12" style="margin-left: 20px;">
-      <ion-col size="6" *ngFor="let product of cartItems; index as i">
-        <ion-card>
-          <ion-card-header class="large-font">
-            <div class="icon-with-text">
-              <ion-icon name="pricetag-outline"></ion-icon>
-              {{product.name}}
-            </div>
-          </ion-card-header>
-          <ion-card-subtitle class="bordered-subtitle center-text">
-            {{product.price|currency}}
-          </ion-card-subtitle>
-          <ion-card-subtitle  class="bordered-subtitle center-text">
-            <ng-container *ngIf="product.quantity > 1"> Cantidad:{{product.quantity}}</ng-container>
-          </ion-card-subtitle>
-          <ion-button color="primary" fill="clear" (click)="removeFromCart(product)">
-            Eliminar
-          </ion-button>
-        </ion-card>
-      </ion-col>
-    </div>
+      <ng-container *ngFor="let product of cartItems; let i = index;">
+        <ion-col size="6" size-md="6" size-lg="6" size-xs="12">
+          <ion-card class="product-card">
+            <ion-card-header class="large-font">
+              <div class="icon-with-text">
+                <ion-icon name="pricetag-outline"></ion-icon>
+                {{ product.name }}
+              </div>
+              <ion-img [src]="product.photo + i" [style.max-width]="'300px'" [style.max-height]="'300px'"></ion-img>
+            </ion-card-header>
+            <ion-card-subtitle class="bordered-subtitle center-text">
+              {{ product.price | currency }}
+            </ion-card-subtitle>
+            <ion-card-subtitle class="bordered-subtitle center-text">
+              <ng-container *ngIf="product.quantity > 1"> Cantidad: {{ product.quantity }}</ng-container>
+            </ion-card-subtitle>
+            <ion-button color="primary" fill="clear" (click)="removeFromCart(product)">
+              Eliminar
+            </ion-button>
+          </ion-card>
+        </ion-col>
+      </ng-container>
     </ion-row>
     <ion-row>
-      <p>Total del carrito: {{calculateCartTotal() | currency}}</p> <!-- Muestra el precio total del carrito -->
+      <p class="total">Total del carrito: {{ calculateCartTotal() | currency }}</p>
     </ion-row>
     <ion-row>
       <ion-button color="secondary" fill="solid" shape="round" (click)="clearCart()" [disabled]="isCartEmpty()">
