@@ -26,8 +26,14 @@
               {{ product.price | currency }}
             </ion-card-subtitle>
             <ion-card-subtitle class="bordered-subtitle center-text">
-              <ng-container *ngIf="product.quantity > 1"> Cantidad: {{ product.quantity }}</ng-container>
+              <!-- 
+    <ng-container *ngIf="product.quantity > 1"> Cantidad: {{ product.quantity }}</ng-container>
+              -->
+              
             </ion-card-subtitle>
+            <ion-button fill="clear" (click)="addToCart(product)">
+              Agregar carrito
+            </ion-button>
             <ion-button color="primary" fill="clear" (click)="removeFromFavorites(product)">
               Eliminar
             </ion-button>
@@ -46,5 +52,4 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
 
