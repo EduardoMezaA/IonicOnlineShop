@@ -1,6 +1,38 @@
+.large-font {
+  font-size: 1.5em; /* Adjust the font size as needed */
+}
+
+/* Center align the text within ion-card-subtitle */
+.center-text {
+  text-align: center;
+}
+/* Add a border and padding to the ion-card-subtitle */
+.bordered-subtitle {
+  border-top: 1px solid #ddd; /* Add a border at the top */
+  padding: 10px 0; /* Add padding to create space */
+  text-align: center; /* Center-align the text within ion-card-subtitle */
+}
+
 .title{
-    font-size: 1.5em;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: bolder;
-    font-style: italic;
-  }
+  font-size: 1.5em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.icon-with-text {
+  display: flex;
+  align-items: center;
+  padding: 10px; /* Puedes ajustar el valor según tus preferencias */
+  
+}
+
+.product-card {
+  background-color: #7a6e16; /* Cambia #FFA500 al color que desees */
+  padding: 10px; /* Añade espacio alrededor del producto si lo deseas */
+}
+
+.total{
+font-size: 20px;
+padding: 10px;
+}

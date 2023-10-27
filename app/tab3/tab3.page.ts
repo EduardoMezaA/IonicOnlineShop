@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CartService } from '../services/cart.service';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-tab3',
@@ -6,7 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  favoriteItems: Product[];
 
-  constructor() {}
+  constructor(private cartService: CartService) {
+    this.favoriteItems=this.cartService.getFavoriteItems();
+    console.log('Productos favoritos:', this.favoriteItems); 
+  }
 
+  removeFromFavorites(product: Product) {
+    this.cartService.removeFromFavorites(product);
+  }
+  
 }
+

@@ -7,6 +7,7 @@ import { Product } from '../models/product.model';
   })
   export class CartService {
     public cartItems:Product[]=[];
+    public favoriteItems:Product[]=[];
     public quantity: number = 1;
     public totalCartPrice: number = 0; // Variable para el precio total del carrito
 
@@ -44,7 +45,7 @@ import { Product } from '../models/product.model';
           this.totalCartPrice = this.calculateCartTotal();
         }
     }
-  
+
     calculateCartTotal(): number {
         let total = 0;
         for (const product of this.cartItems) {
@@ -61,5 +62,27 @@ import { Product } from '../models/product.model';
       this.cartItems = [];
       return this.cartItems;
     }
+
+    addToFavorites(product: Product) {
+      const existingProduct = this.favoriteItems.find((item) => item.name === product.name);
+  
+      if (!existingProduct) {
+        this.favoriteItems.push(product);
+        console.log('Producto agregado a favoritos:', product);
+      }
+    }
+
+    getFavoriteItems() {
+      return this.favoriteItems;
+    }
+
+    removeFromFavorites(product: Product) {
+      const index = this.favoriteItems.indexOf(product);
+      if (index !== -1) {
+        this.favoriteItems.splice(index, 1);
+      }
+    }
+    
+    
 
   }
