@@ -1,0 +1,22 @@
+/* Increase font size for the product name or header */
+.large-font {
+    font-size: 1.5em; /* Adjust the font size as needed */
+  }
+  
+/* Center align the text within ion-card-subtitle */
+.center-text {
+    text-align: center;
+  }
+/* Add a border and padding to the ion-card-subtitle */
+.bordered-subtitle {
+    border-top: 1px solid #ddd; /* Add a border at the top */
+    padding: 10px 0; /* Add padding to create space */
+    text-align: center; /* Center-align the text within ion-card-subtitle */
+  }
+  
+.title{
+  font-size: 1.5em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bolder;
+  font-style: italic;
+}
