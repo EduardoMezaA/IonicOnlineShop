@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Product } from '../models/product.model';
-import { FormsModule } from '@angular/forms';
 import { CartService } from '../services/cart.service';
 import { AlertController } from '@ionic/angular';
 
@@ -101,5 +100,19 @@ export class Tab1Page {
     await alert.present();
   }
 
+  addTofavorite(product:Product){
+    this.cartService.addToFavorites(product);
+    this.presentAlert2();
+  }
+
+  async presentAlert2() {
+    const alert = await this.alertController.create({
+      header: 'Estimado cliente',
+      message: 'Usted ha agregado el producto a favoritos',
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  }
 
 }
